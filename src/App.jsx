@@ -14,7 +14,7 @@ export default function App() {
   return (
     <>
       <Nav page={page} setPage={setPage} />
-      <main style={{ paddingTop: page === 'Home' ? '0' : '72px' }}>
+      <main>
         {page === 'Home'     && <HomePage     setPage={setPage} />}
         {page === 'Services' && <ServicesPage />}
         {page === 'Pricing'  && <PricingPage  setPage={setPage} />}
