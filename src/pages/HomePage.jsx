@@ -2,21 +2,21 @@ import useReveal from '../hooks/useReveal';
 import './HomePage.css';
 
 const PROOF = [
-  { value: 'Grades 7-10', label: 'Support for middle and high school applicants' },
-  { value: '4', label: 'Current NCSSM student consultants' },
+  { value: 'NCSSM + College', label: 'Coaching for selective school applications' },
+  { value: 'Ivy & Top 20', label: 'Where our consultants were admitted' },
   { value: 'Competitive', label: 'Transparent, inquiry-based pricing' },
 ];
 
 const FOCUS = [
   'Essay strategy',
-  'Math test prep',
+  'College application coaching',
   'Activity positioning',
   'One-on-one coaching',
 ];
 
 const PROCESS = [
   { title: 'Choose a package', text: 'Pick the support level that matches your grade and timeline.' },
-  { title: 'Work with a student consultant', text: 'Get direct help from someone inside NCSSM.' },
+  { title: 'Work with a top admit', text: 'Get direct help from someone who just went through the process at a top university.' },
   { title: 'Submit a sharper application', text: 'Leave with clearer essays, stronger prep, and a focused story.' },
 ];
 
@@ -29,10 +29,10 @@ export default function HomePage({ navigate, bookSession }) {
         <div className="container">
           <div className="home-hero-grid">
             <div>
-              <div className="section-label">NCSSM admissions coaching</div>
-              <h1 className="home-title">Clear, direct help for your NCSSM application.</h1>
+              <div className="section-label">College & NCSSM admissions coaching</div>
+              <h1 className="home-title">Get coached by students who got in.</h1>
               <p className="home-sub">
-                Work with current NCSSM students on essays, math prep, activities, and application strategy.
+                Work with Ivy League and top university admits on essays, college applications, NCSSM, and everything in between.
               </p>
               <div className="home-actions">
                 <button className="btn-primary" onClick={() => navigate('Pricing')}>View Pricing</button>
@@ -45,7 +45,7 @@ export default function HomePage({ navigate, bookSession }) {
               {FOCUS.map((item) => (
                 <div className="focus-row" key={item}>{item}</div>
               ))}
-              <div className="home-panel-note">No generic tutoring playbook. Just the application pieces that matter.</div>
+              <div className="home-panel-note">No generic tutoring playbook. Real experience from students who just went through it.</div>
             </div>
           </div>
         </div>

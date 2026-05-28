@@ -53,7 +53,7 @@ export default function PricingPage({ bookSession }) {
         <div className="container">
           <div className="page-hero-label">Pricing</div>
           <h1 className="page-headline">Tailored to your needs.</h1>
-          <p className="page-sub">Every student's path is different. Reach out and we'll put together the right plan for your goals and timeline.</p>
+          <p className="page-sub">Whether you're applying to college or NCSSM, every student's path is different. Reach out and we'll put together the right plan.</p>
         </div>
       </section>
 

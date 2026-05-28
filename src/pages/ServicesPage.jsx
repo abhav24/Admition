@@ -9,7 +9,7 @@ const SERVICES = [
   },
   {
     title: 'Math prep',
-    line: 'Focused practice for the NCSSM math entrance exam.',
+    line: 'Focused practice for the NCSSM math entrance exam and college-level quantitative prep.',
     items: ['Prep documents', 'Problem review', 'Reasoning practice'],
   },
   {
@@ -19,7 +19,7 @@ const SERVICES = [
   },
   {
     title: 'One-on-one coaching',
-    line: 'Direct application help from a current NCSSM student.',
+    line: 'Direct application help from an Ivy League or top university admit.',
     items: ['Live sessions', 'Action steps', 'Flexible topics'],
   },
   {
@@ -43,7 +43,7 @@ export default function ServicesPage() {
         <div className="container">
           <div className="page-hero-label">Services</div>
           <h1 className="page-headline">Pick the help your application actually needs.</h1>
-          <p className="page-sub">Every service is practical, specific, and tied to one part of the NCSSM application.</p>
+          <p className="page-sub">Every service is practical, specific, and tied to one part of your college or NCSSM application.</p>
         </div>
       </section>
 

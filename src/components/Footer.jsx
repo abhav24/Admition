@@ -8,7 +8,7 @@ export default function Footer({ navigate }) {
           <div>
             <div className="footer-brand">Adm<span>i</span>tion</div>
             <div className="footer-tagline">
-              NCSSM admissions coaching from current NCSSM students.
+              College & NCSSM admissions coaching from Ivy League and top university admits.
             </div>
           </div>
           <div>
