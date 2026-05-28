@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef } from 'react';
 import useReveal from '../hooks/useReveal';
 import './AboutPage.css';
 
@@ -13,15 +13,31 @@ function initials(name) {
   return name.split(' ').map((word) => word[0]).join('');
 }
 
-export default function AboutPage() {
+export default function AboutPage({ bookingScrollRequest }) {
   useReveal();
-  const [form, setForm] = useState({ name: '', email: '', grade: '', message: '' });
-  const [sent, setSent] = useState(false);
+  const bookingRef = useRef(null);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setSent(true);
-  };
+  useEffect(() => {
+    if (bookingScrollRequest) {
+      const frame = requestAnimationFrame(() => {
+        bookingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      return () => cancelAnimationFrame(frame);
+    }
+    return undefined;
+  }, [bookingScrollRequest]);
+
+  useEffect(() => {
+    const existing = document.querySelector('script[src="https://static.zcal.co/embed/v1/embed.js"]');
+    if (existing) existing.remove();
+
+    const script = document.createElement('script');
+    script.src = 'https://static.zcal.co/embed/v1/embed.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => script.remove();
+  }, []);
 
   return (
     <div className="page-enter">
@@ -29,7 +45,7 @@ export default function AboutPage() {
         <div className="container">
           <div className="page-hero-label">About</div>
           <h1 className="page-headline">Current NCSSM students, focused on your application.</h1>
-          <p className="page-sub">Meet the team, then send a short note to book a first conversation.</p>
+          <p className="page-sub">Meet the team, then book a free consultation to get started.</p>
         </div>
       </section>
 
@@ -49,78 +65,17 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="contact-section section">
+      <section id="book-session" ref={bookingRef} className="contact-section section">
         <div className="container">
-          <div className="contact-inner">
-            <div>
-              <div className="section-label">Contact</div>
-              <h2>Book a first session.</h2>
-              <p>Tell us your grade and what kind of help you need. We will reply within 24-48 hours.</p>
-              <a className="contact-email" href="mailto:hello@admition.com">hello@admition.com</a>
+          <div className="contact-header">
+            <div className="section-label">Book a Session</div>
+            <h2>Schedule a free consultation.</h2>
+            <p>Pick a time that works for you. We'll talk through your goals and put together the right plan.</p>
+          </div>
+          <div className="zcal-wrapper">
+            <div className="zcal-inline-widget">
+              <a href="https://zcal.co/i/8pOqM5eC">Free Admition Consultation - Schedule a meeting</a>
             </div>
-
-            <form onSubmit={handleSubmit}>
-              {sent ? (
-                <div className="form-success" role="status">
-                  <h3>Message sent.</h3>
-                  <p>We will be in touch within 24-48 hours.</p>
-                </div>
-              ) : (
-                <>
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="name">Full name</label>
-                    <input
-                      className="form-input"
-                      id="name"
-                      type="text"
-                      placeholder="Your name"
-                      value={form.name}
-                      onChange={(event) => setForm({ ...form, name: event.target.value })}
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="email">Email</label>
-                    <input
-                      className="form-input"
-                      id="email"
-                      type="email"
-                      placeholder="you@example.com"
-                      value={form.email}
-                      onChange={(event) => setForm({ ...form, email: event.target.value })}
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="grade">Grade level</label>
-                    <select
-                      className="form-select"
-                      id="grade"
-                      value={form.grade}
-                      onChange={(event) => setForm({ ...form, grade: event.target.value })}
-                      required
-                    >
-                      <option value="">Select grade</option>
-                      <option>Grade 7</option>
-                      <option>Grade 8</option>
-                      <option>Grade 9</option>
-                      <option>Grade 10</option>
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="message">What do you need help with?</label>
-                    <textarea
-                      className="form-textarea"
-                      id="message"
-                      placeholder="Essays, math prep, activities, tutoring, or a package question."
-                      value={form.message}
-                      onChange={(event) => setForm({ ...form, message: event.target.value })}
-                    />
-                  </div>
-                  <button className="btn-primary" type="submit">Send Message</button>
-                </>
-              )}
-            </form>
           </div>
         </div>
       </section>

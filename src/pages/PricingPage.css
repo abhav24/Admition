@@ -40,13 +40,13 @@
   line-height: 1.05;
 }
 
-.pricing-price {
-  margin: 22px 0;
-  color: var(--ink);
-  font-family: var(--ff-display);
-  font-size: 54px;
-  font-weight: 700;
-  line-height: 1;
+.pricing-inquiry {
+  margin: 18px 0;
+  color: var(--accent-dark);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .pricing-card ul {
@@ -97,11 +97,28 @@
   font-size: 20px;
 }
 
-.addon-card strong {
-  color: var(--accent-dark);
-  font-family: var(--ff-display);
-  font-size: 44px;
-  line-height: 1;
+.pricing-cta-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 24px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 32px 36px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+.pricing-cta-strip p {
+  color: var(--muted);
+  font-size: 22px;
+}
+
+@media (max-width: 680px) {
+  .pricing-cta-strip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 1100px) {
