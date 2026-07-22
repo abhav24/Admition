@@ -1,14 +1,5 @@
 import './Footer.css';
 
-const SERVICES = [
-  'Essay Consultations',
-  'Math Test Preparation',
-  'Extracurricular Tailoring',
-  'One-on-One Sessions',
-  'SAT/ACT Tutoring',
-  'Public Webinars',
-];
-
 export default function Footer({ setPage }) {
   const go = (p) => { setPage(p); window.scrollTo(0, 0); };
 
@@ -19,7 +10,7 @@ export default function Footer({ setPage }) {
           <div>
             <div className="footer-brand">Adm<span>i</span>tion</div>
             <div className="footer-tagline">
-              Competitive admissions via personalized consultation. Built by NCSSM students, for NCSSM applicants.
+              NCSSM admissions coaching from current NCSSM students.
             </div>
           </div>
           <div>
@@ -30,18 +21,9 @@ export default function Footer({ setPage }) {
               ))}
             </ul>
           </div>
-          <div>
-            <div className="footer-col-title">Services</div>
-            <ul className="footer-links">
-              {SERVICES.map(s => (
-                <li key={s}><span>{s}</span></li>
-              ))}
-            </ul>
-          </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2025 Admition. All rights reserved.</span>
-          <span className="footer-ncssm-badge">NCSSM Student Operated</span>
+          <span>© 2026 Admition. All rights reserved.</span>
         </div>
       </div>
     </footer>
