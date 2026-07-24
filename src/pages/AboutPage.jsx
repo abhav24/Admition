@@ -3,14 +3,14 @@ import useReveal from '../hooks/useReveal';
 import './AboutPage.css';
 
 const TEAM = [
-  { name: 'Aarush Jugdar',        role: 'Co-Founder', bio: 'Current NCSSM student with deep expertise in the math examination and application strategy.' },
-  { name: 'Abhav Kunchakuri',     role: 'Co-Founder', bio: 'Specializes in essay development and personal narrative, helping students find their authentic voice.' },
-  { name: 'Soham Kela',           role: 'Co-Founder', bio: 'Leads extracurricular strategy and academic positioning for prospective NCSSM applicants.' },
-  { name: 'Om Shah',              role: 'Co-Founder', bio: 'Focuses on one-on-one consulting and student coaching throughout the application journey.' },
+  { name: 'Aarush Jugdar', role: 'Math prep' },
+  { name: 'Abhav Kunchakuri', role: 'Essay strategy' },
+  { name: 'Soham Kela', role: 'Activity strategy' },
+  { name: 'Om Shah', role: 'One-on-one coaching' },
 ];
 
 function initials(name) {
-  return name.split(' ').map(w => w[0]).join('');
+  return name.split(' ').map((word) => word[0]).join('');
 }
 
 export default function AboutPage() {
@@ -18,8 +18,8 @@ export default function AboutPage() {
   const [form, setForm] = useState({ name: '', email: '', grade: '', message: '' });
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     setSent(true);
   };
 
@@ -27,101 +27,79 @@ export default function AboutPage() {
     <div className="page-enter">
       <section className="page-hero">
         <div className="container">
-          <div className="page-hero-label">About Admition</div>
-          <h1 className="page-headline reveal">
-            Built by students who know <em>exactly</em> what it takes.
-          </h1>
+          <div className="page-hero-label">About</div>
+          <h1 className="page-headline">Current NCSSM students, focused on your application.</h1>
+          <p className="page-sub">Meet the team, then send a short note to book a first conversation.</p>
         </div>
       </section>
 
-      {/* Mission */}
-      <div className="about-mission">
+      <section className="team-section section">
         <div className="container">
-          <div className="about-mission-inner">
-            <h2 className="about-mission-headline reveal">
-              Our mission is simple: <em>level the playing field.</em>
-            </h2>
-            <div className="about-mission-body reveal">
-              <p>
-                Getting into NCSSM — North Carolina School of Science and Mathematics — is one of the most competitive academic achievements a middle or high schooler can pursue. Yet most students approach it with little more than generic advice from well-meaning but uninformed sources.
-              </p>
-              <p>
-                We started Admition because we were those students. We navigated the process, got in, and immediately recognized how much better we could have done it — and how much we could help the next generation do the same.
-              </p>
-              <p>
-                Every consultant on our team is a current NCSSM student. We don't just teach preparation strategies. We know the rubrics, the culture, and the specific qualities admissions readers are looking for — because we're living it.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Team */}
-      <section className="team-section">
-        <div className="container-wide">
-          <div className="section-label reveal">The Team</div>
-          <h2 className="section-headline reveal">
-            Four NCSSM students. <em style={{ fontStyle: 'italic', color: 'var(--green)' }}>One shared goal.</em>
-          </h2>
           <div className="team-grid">
-            {TEAM.map((m, i) => (
-              <div key={i} className={`team-card reveal reveal-delay-${i + 1}`}>
-                <div className="team-photo-placeholder">
-                  <div className="team-photo-initials">{initials(m.name)}</div>
-                  <div className="team-photo-note">headshot</div>
+            {TEAM.map((member) => (
+              <article className="team-card" key={member.name}>
+                <div className="team-initials" aria-hidden="true">{initials(member.name)}</div>
+                <div>
+                  <h2>{member.name}</h2>
+                  <p>{member.role}</p>
                 </div>
-                <div className="team-info">
-                  <div className="team-name">{m.name}</div>
-                  <div className="team-role">{m.role}</div>
-                  <p className="team-bio">{m.bio}</p>
-                </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact */}
-      <section className="contact-section">
+      <section className="contact-section section">
         <div className="container">
           <div className="contact-inner">
             <div>
-              <div className="section-label reveal">Contact Us</div>
-              <h2 className="section-headline reveal" style={{ fontSize: 'clamp(28px, 3vw, 44px)' }}>
-                Start the conversation.
-              </h2>
-              <p className="reveal" style={{ marginTop: '20px', fontSize: '17px', color: 'var(--charcoal-3)', lineHeight: 1.75 }}>
-                Reach out to discuss which tier is right for your student, ask questions about our services, or book your first session.
-              </p>
-              <div className="contact-email-block reveal">
-                <div className="contact-email-label">Email</div>
-                <div className="contact-email">hello@admition.com</div>
-              </div>
+              <div className="section-label">Contact</div>
+              <h2>Book a first session.</h2>
+              <p>Tell us your grade and what kind of help you need. We will reply within 24-48 hours.</p>
+              <a className="contact-email" href="mailto:hello@admition.com">hello@admition.com</a>
             </div>
 
             <form onSubmit={handleSubmit}>
               {sent ? (
-                <div className="form-success">
-                  <div className="form-success-icon">✓</div>
-                  <div className="form-success-title">Message sent</div>
-                  <p className="form-success-sub">We'll be in touch within 24–48 hours.</p>
+                <div className="form-success" role="status">
+                  <h3>Message sent.</h3>
+                  <p>We will be in touch within 24-48 hours.</p>
                 </div>
               ) : (
                 <>
                   <div className="form-group">
-                    <label className="form-label">Full Name</label>
-                    <input className="form-input" type="text" placeholder="Your name"
-                      value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} required />
+                    <label className="form-label" htmlFor="name">Full name</label>
+                    <input
+                      className="form-input"
+                      id="name"
+                      type="text"
+                      placeholder="Your name"
+                      value={form.name}
+                      onChange={(event) => setForm({ ...form, name: event.target.value })}
+                      required
+                    />
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Email</label>
-                    <input className="form-input" type="email" placeholder="your@email.com"
-                      value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} required />
+                    <label className="form-label" htmlFor="email">Email</label>
+                    <input
+                      className="form-input"
+                      id="email"
+                      type="email"
+                      placeholder="you@example.com"
+                      value={form.email}
+                      onChange={(event) => setForm({ ...form, email: event.target.value })}
+                      required
+                    />
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Grade Level</label>
-                    <select className="form-select"
-                      value={form.grade} onChange={e => setForm({ ...form, grade: e.target.value })}>
+                    <label className="form-label" htmlFor="grade">Grade level</label>
+                    <select
+                      className="form-select"
+                      id="grade"
+                      value={form.grade}
+                      onChange={(event) => setForm({ ...form, grade: event.target.value })}
+                      required
+                    >
                       <option value="">Select grade</option>
                       <option>Grade 7</option>
                       <option>Grade 8</option>
@@ -130,14 +108,16 @@ export default function AboutPage() {
                     </select>
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Message</label>
-                    <textarea className="form-textarea"
-                      placeholder="Tell us about your goals and what service you're interested in..."
-                      value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} />
+                    <label className="form-label" htmlFor="message">What do you need help with?</label>
+                    <textarea
+                      className="form-textarea"
+                      id="message"
+                      placeholder="Essays, math prep, activities, tutoring, or a package question."
+                      value={form.message}
+                      onChange={(event) => setForm({ ...form, message: event.target.value })}
+                    />
                   </div>
-                  <button className="btn-primary" type="submit" style={{ marginTop: '8px' }}>
-                    Send Message
-                  </button>
+                  <button className="btn-primary" type="submit">Send Message</button>
                 </>
               )}
             </form>
