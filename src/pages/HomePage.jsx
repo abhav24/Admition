@@ -4,7 +4,7 @@ import './HomePage.css';
 const PROOF = [
   { value: 'Grades 7-10', label: 'Support for middle and high school applicants' },
   { value: '4', label: 'Current NCSSM student consultants' },
-  { value: '$100+', label: 'Packages start with focused early prep' },
+  { value: 'Competitive', label: 'Transparent, inquiry-based pricing' },
 ];
 
 const FOCUS = [
@@ -20,9 +20,8 @@ const PROCESS = [
   { title: 'Submit a sharper application', text: 'Leave with clearer essays, stronger prep, and a focused story.' },
 ];
 
-export default function HomePage({ setPage }) {
+export default function HomePage({ navigate, bookSession }) {
   useReveal();
-  const go = (p) => { setPage(p); window.scrollTo(0, 0); };
 
   return (
     <div className="page-enter">
@@ -36,8 +35,8 @@ export default function HomePage({ setPage }) {
                 Work with current NCSSM students on essays, math prep, activities, and application strategy.
               </p>
               <div className="home-actions">
-                <button className="btn-primary" onClick={() => go('Pricing')}>View Pricing</button>
-                <button className="btn-ghost" onClick={() => go('About')}>Book a Session</button>
+                <button className="btn-primary" onClick={() => navigate('Pricing')}>View Pricing</button>
+                <button className="btn-ghost" onClick={bookSession}>Book a Session</button>
               </div>
             </div>
 
@@ -83,7 +82,7 @@ export default function HomePage({ setPage }) {
       <section className="section home-cta">
         <div className="container">
           <h2>Ready to start?</h2>
-          <button className="btn-primary" onClick={() => go('About')}>Contact the Team</button>
+          <button className="btn-primary" onClick={bookSession}>Contact the Team</button>
         </div>
       </section>
     </div>
