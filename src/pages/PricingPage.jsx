@@ -5,33 +5,29 @@ const PACKAGES = [
   {
     group: 'Grades 7-8',
     name: 'Middle School',
-    price: '$100',
     features: ['4 total sessions', 'Math help', 'Essay help', 'Story curation'],
   },
   {
     group: 'Grades 9-10',
     name: 'Asynchronous',
-    price: '$350',
     features: ['5 essay edits', '2 activity reviews', '3 math prep documents'],
   },
   {
     group: 'Grades 9-10',
     name: 'Guided',
-    price: '$1,000',
     features: ['4 live sessions', '10 essay edits', '5 activity reviews', '3 math prep documents'],
     featured: true,
   },
   {
     group: 'Grades 9-10',
     name: 'Comprehensive',
-    price: '$2,000',
     features: ['8 live sessions', 'Unlimited essay edits', 'Unlimited activity reviews', '3 math prep documents'],
   },
 ];
 
 const ADD_ONS = [
-  { name: 'Extra application session', price: '$25', unit: 'per session' },
-  { name: 'SAT/ACT tutoring', price: '$40', unit: 'per hour' },
+  { name: 'Extra application session', unit: 'per session' },
+  { name: 'SAT/ACT tutoring', unit: 'per hour' },
 ];
 
 function PricingCard({ pkg, onCta }) {
@@ -39,26 +35,25 @@ function PricingCard({ pkg, onCta }) {
     <article className={`pricing-card${pkg.featured ? ' featured' : ''}`}>
       <div className="pricing-group">{pkg.group}</div>
       <h2>{pkg.name}</h2>
-      <div className="pricing-price">{pkg.price}</div>
+      <div className="pricing-inquiry">Pricing by inquiry</div>
       <ul>
         {pkg.features.map((feature) => <li key={feature}>{feature}</li>)}
       </ul>
-      <button className={pkg.featured ? 'btn-primary' : 'btn-ghost'} onClick={onCta}>Get Started</button>
+      <button className={pkg.featured ? 'btn-primary' : 'btn-ghost'} onClick={onCta}>Get in Touch</button>
     </article>
   );
 }
 
-export default function PricingPage({ setPage }) {
+export default function PricingPage({ bookSession }) {
   useReveal();
-  const goAbout = () => { setPage('About'); window.scrollTo(0, 0); };
 
   return (
     <div className="page-enter">
       <section className="page-hero">
         <div className="container">
           <div className="page-hero-label">Pricing</div>
-          <h1 className="page-headline">Simple packages. Clear scope.</h1>
-          <p className="page-sub">Choose the level of help you need now. Add live sessions only when you need them.</p>
+          <h1 className="page-headline">Tailored to your needs.</h1>
+          <p className="page-sub">Every student's path is different. Reach out and we'll put together the right plan for your goals and timeline.</p>
         </div>
       </section>
 
@@ -66,7 +61,7 @@ export default function PricingPage({ setPage }) {
         <div className="container">
           <div className="pricing-grid">
             {PACKAGES.map((pkg) => (
-              <PricingCard key={`${pkg.group}-${pkg.name}`} pkg={pkg} onCta={goAbout} />
+              <PricingCard key={`${pkg.group}-${pkg.name}`} pkg={pkg} onCta={bookSession} />
             ))}
           </div>
 
@@ -77,9 +72,14 @@ export default function PricingPage({ setPage }) {
                   <h2>{addon.name}</h2>
                   <p>{addon.unit}</p>
                 </div>
-                <strong>{addon.price}</strong>
+                <button className="btn-ghost" onClick={bookSession}>Inquire</button>
               </div>
             ))}
+          </div>
+
+          <div className="pricing-cta-strip">
+            <p>Not sure which package fits? We'll help you figure it out.</p>
+            <button className="btn-primary" onClick={bookSession}>Contact Us</button>
           </div>
         </div>
       </section>
