@@ -73,11 +73,8 @@
   overflow: hidden;
 }
 
-.zcal-wrapper .zcal-inline-widget {
-  min-height: 700px;
-}
-
-.zcal-wrapper .zcal-inline-widget iframe {
+.zcal-wrapper iframe {
+  display: block;
   width: 100%;
   border: none;
 }
