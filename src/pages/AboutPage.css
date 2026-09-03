@@ -95,7 +95,7 @@
     scroll-margin-top: 144px;
   }
 
-  .zcal-wrapper .zcal-inline-widget {
-    min-height: 600px;
+  .zcal-wrapper iframe {
+    height: 600px;
   }
 }
