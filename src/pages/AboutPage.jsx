@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react';
 import useReveal from '../hooks/useReveal';
 import './AboutPage.css';
 
+const ZCAL_URL = 'https://zcal.co/i/8pOqM5eC?embed=1&embedType=iframe';
+
 const TEAM = [
   { name: 'Aarush Jugdar', role: 'Math prep' },
   { name: 'Abhav Kunchakuri', role: 'Essay strategy' },
