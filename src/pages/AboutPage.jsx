@@ -29,17 +29,6 @@ export default function AboutPage({ bookingScrollRequest }) {
     return undefined;
   }, [bookingScrollRequest]);
 
-  useEffect(() => {
-    const existing = document.querySelector('script[src="https://static.zcal.co/embed/v1/embed.js"]');
-    if (existing) existing.remove();
-
-    const script = document.createElement('script');
-    script.src = 'https://static.zcal.co/embed/v1/embed.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => script.remove();
-  }, []);
 
   return (
     <div className="page-enter">
