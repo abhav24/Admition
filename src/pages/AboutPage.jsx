@@ -64,9 +64,11 @@ export default function AboutPage({ bookingScrollRequest }) {
             <p>Pick a time that works for you. We'll talk through your goals and put together the right plan.</p>
           </div>
           <div className="zcal-wrapper">
-            <div className="zcal-inline-widget">
-              <a href="https://zcal.co/i/8pOqM5eC">Free Admition Consultation - Schedule a meeting</a>
-            </div>
+            <iframe
+              src={ZCAL_URL}
+              title="Book a free Admition consultation"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
