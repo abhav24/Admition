@@ -5,10 +5,26 @@ import './AboutPage.css';
 const ZCAL_URL = 'https://zcal.co/i/8pOqM5eC?embed=1&embedType=iframe';
 
 const TEAM = [
-  { name: 'Aarush Jugdar', role: 'Math prep' },
-  { name: 'Abhav Kunchakuri', role: 'Essay strategy' },
-  { name: 'Soham Kela', role: 'Activity strategy' },
-  { name: 'Om Shah', role: 'One-on-one coaching' },
+  {
+    name: 'Aarush Jugdar',
+    role: 'Math prep',
+    admits: 'Multiple BS/MD admits · UPenn LSM (Wharton + Life Sciences)',
+  },
+  {
+    name: 'Abhav Kunchakuri',
+    role: 'Essay strategy',
+    admits: 'UNC Kenan-Flagler · NC State Engineering & Honors',
+  },
+  {
+    name: 'Soham Kela',
+    role: 'Activity strategy',
+    admits: 'NYU Stern · UNC Kenan-Flagler',
+  },
+  {
+    name: 'Om Shah',
+    role: 'One-on-one coaching',
+    admits: 'Duke University, Neuroscience',
+  },
 ];
 
 function initials(name) {
