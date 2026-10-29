@@ -51,8 +51,8 @@ export default function AboutPage({ bookingScrollRequest }) {
       <section className="page-hero">
         <div className="container">
           <div className="page-hero-label">About</div>
-          <h1 className="page-headline">Current NCSSM students, focused on your application.</h1>
-          <p className="page-sub">Meet the team, then book a free consultation to get started.</p>
+          <h1 className="page-headline">Ivy League and top university admits, here to get you in.</h1>
+          <p className="page-sub">Every consultant on our team earned a spot at a top university. Meet them, then book a free consultation.</p>
         </div>
       </section>
 
