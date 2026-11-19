@@ -65,6 +65,7 @@ export default function AboutPage({ bookingScrollRequest }) {
                 <div>
                   <h2>{member.name}</h2>
                   <p>{member.role}</p>
+                  <p className="team-admits">{member.admits}</p>
                 </div>
               </article>
             ))}
